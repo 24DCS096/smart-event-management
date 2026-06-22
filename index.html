@@ -1,27 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Smart Event Manager</title>
+    <title>Smart Event Portal</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header>
-    <h1>🎉 Smart Event Management Portal</h1>
-</header>
+<!-- LOGIN PAGE -->
+<div id="loginPage" class="center-box">
+    <h2>Login</h2>
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="login()">Login</button>
+    <p onclick="showRegister()">New user? Register</p>
+</div>
 
-<section class="form-section">
-    <h2>Create Event</h2>
-    <input type="text" id="eventName" placeholder="Event Name">
-    <input type="date" id="eventDate">
-    <input type="text" id="eventVenue" placeholder="Venue">
-    <button onclick="addEvent()">Add Event</button>
-</section>
+<!-- REGISTER PAGE -->
+<div id="registerPage" class="center-box hidden">
+    <h2>Register</h2>
+    <input type="text" placeholder="Username">
+    <input type="password" placeholder="Password">
+    <button onclick="showLogin()">Register</button>
+</div>
 
-<section class="list-section">
-    <h2>Event List</h2>
-    <ul id="eventList"></ul>
-</section>
+<!-- DASHBOARD -->
+<div id="dashboard" class="hidden">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <h2>🎉 EMS</h2>
+        <ul>
+            <li onclick="showSection('home')">Home</li>
+            <li onclick="showSection('create')">Create Event</li>
+            <li onclick="showSection('events')">Events</li>
+            <li onclick="logout()">Logout</li>
+        </ul>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main">
+
+        <div id="home" class="section">
+            <h1>Dashboard</h1>
+            <p>Welcome to Smart Event Manager</p>
+        </div>
+
+        <div id="create" class="section hidden">
+            <h2>Create Event</h2>
+            <input type="text" id="eventName" placeholder="Event Name">
+            <input type="date" id="eventDate">
+            <input type="text" id="eventVenue" placeholder="Venue">
+            <button onclick="addEvent()">Add Event</button>
+        </div>
+
+        <div id="events" class="section hidden">
+            <h2>All Events</h2>
+            <ul id="eventList"></ul>
+        </div>
+
+    </div>
+</div>
 
 <script src="script.js"></script>
 </body>
