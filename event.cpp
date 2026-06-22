@@ -2,56 +2,49 @@
 #include <vector>
 using namespace std;
 
-struct Event {
-    string name;
-    string date;
-    string venue;
+class Event {
+public:
+    string name, date, venue;
 };
 
 vector<Event> events;
 
 void addEvent() {
     Event e;
-    cout << "Enter Event Name: ";
-    cin >> e.name;
-    cout << "Enter Date: ";
-    cin >> e.date;
-    cout << "Enter Venue: ";
-    cin >> e.venue;
+    cout << "Enter Name: "; cin >> e.name;
+    cout << "Enter Date: "; cin >> e.date;
+    cout << "Enter Venue: "; cin >> e.venue;
 
     events.push_back(e);
     cout << "Event Added!\n";
 }
 
 void viewEvents() {
-    for (int i = 0; i < events.size(); i++) {
-        cout << i+1 << ". " << events[i].name << " | "
-             << events[i].date << " | "
-             << events[i].venue << endl;
+    cout << "\nEvents:\n";
+    for(int i=0;i<events.size();i++) {
+        cout << i+1 << ". " << events[i].name
+             << " | " << events[i].date
+             << " | " << events[i].venue << endl;
     }
 }
 
 void deleteEvent() {
-    int index;
-    cout << "Enter event number to delete: ";
-    cin >> index;
-
-    events.erase(events.begin() + index - 1);
+    int i;
+    cout << "Enter index: ";
+    cin >> i;
+    events.erase(events.begin()+i-1);
     cout << "Deleted!\n";
 }
 
 int main() {
-    int choice;
+    int ch;
+    while(true) {
+        cout << "\n1.Add 2.View 3.Delete 4.Exit\n";
+        cin >> ch;
 
-    while (true) {
-        cout << "\n1.Add Event\n2.View Events\n3.Delete Event\n4.Exit\n";
-        cin >> choice;
-
-        switch(choice) {
-            case 1: addEvent(); break;
-            case 2: viewEvents(); break;
-            case 3: deleteEvent(); break;
-            case 4: return 0;
-        }
+        if(ch==1) addEvent();
+        else if(ch==2) viewEvents();
+        else if(ch==3) deleteEvent();
+        else break;
     }
 }
